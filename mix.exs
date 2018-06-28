@@ -1,17 +1,19 @@
 defmodule BarrelEx.MixProject do
   use Mix.Project
 
+  @version "0.2.0"
+
   def project do
     [
       app: :barrel_ex,
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       description: description(),
       package: package(),
       deps: deps(),
       name: "barrel_ex_http",
-      source_url: "https://gitlab.com/barrel-db/Clients/barrel_ex",
+      source_url: "https://gitlab.com/barrel-db/Clients/barrel_ex_http",
       test_coverage: [tool: ExCoveralls],
       preferred_cli_env: [
         coveralls: :test,
@@ -22,7 +24,6 @@ defmodule BarrelEx.MixProject do
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
     [
       extra_applications: [:logger]
@@ -40,11 +41,10 @@ defmodule BarrelEx.MixProject do
       maintainers: ["Jakub Janarek"],
       licenses: ["MIT License"],
       links: %{"GitHub" => "https://github.com/jxub/barrel_ex",
-        "GitLab" => "https://gitlab.com/barrel-db/Clients/barrel_ex"}
+        "GitLab" => "https://gitlab.com/barrel-db/Clients/barrel_ex_http"}
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
       {:httpoison, "~> 1.1.0"},
@@ -54,8 +54,6 @@ defmodule BarrelEx.MixProject do
       {:excoveralls, "~> 0.8", only: :test},
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
       {:ex_doc, ">= 0.0.0", only: :dev}
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
     ]
   end
 end
