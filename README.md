@@ -1,8 +1,8 @@
 # BarrelEx
 ## Elixir bindings for the BarrelDB API
 
-Currently, only bindings to the REST API are supported.
-Bindings directly to Erlang are pending to be done at the moment.
+This package contains the Elixir bindings to the REST API.
+Bindings directly to Erlang code can be found [here](https://gitlab.com/barrel-db/Clients/barrel_ex).
 
 ## Usage
 
@@ -15,16 +15,16 @@ To use the latest version, paste the following line in mix.exs deps:
 And use as you wish:
 
 ```elixir
-defmodule MyModule do
+defmodule Users do
   
   alias BarrelEx.{
     Database,
     Document
   }
   
-  def myfun do
+  def create_user(name, surname) do
     with {:ok, db} = Database.get(db) do
-      Map.new([id: "1234", name: "Jakub", surname: "Janarek"])
+      Map.new([id: "1234", name: name, surname: surname])
       |> Document.create!(db)
     end
   end
@@ -43,6 +43,13 @@ $ git clone https://gitlab.com/barrel-db/barrel-platform
 $ cd barrel-platform
 $ make rel
 $ ./_build/prod/rel/barrel/bin/barrel start
+```
+
+If barrel-platform fails to start, you might need to remove the BARREL_TS file, as it's
+not erased automatically after each run.
+
+```bash
+$ rm _build/prod/rel/barrel/data/barrel@127.0.0.1/BARREL_TS
 ```
 
 In case you'd like to see the list of all the supported operations,
