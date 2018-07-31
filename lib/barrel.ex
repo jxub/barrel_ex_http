@@ -7,8 +7,8 @@ defmodule BarrelEx do
   defmodule MyModule do
     use BarrelEx
     
-    def myfun do
-      with {:ok, db} = Database.get(db) do
+    def create_sample_user do
+      with {:ok, db} <- Database.get(db) do
         Map.new([id: "1234", name: "Jakub", surname: "Janarek"])
         |> Document.create!(db)
       end
