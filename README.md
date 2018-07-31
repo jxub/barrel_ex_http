@@ -1,5 +1,5 @@
-# BarrelEx
-## Elixir bindings for the BarrelDB API
+# BarrelEx HTTP
+## Elixir bindings for the BarrelDB HTTP API
 
 This package contains the Elixir bindings to the REST API.
 Bindings directly to Erlang code can be found [here](https://gitlab.com/barrel-db/Clients/barrel_ex).
@@ -9,7 +9,7 @@ Bindings directly to Erlang code can be found [here](https://gitlab.com/barrel-d
 To use the latest version, paste the following line in mix.exs deps:
 
 ```elixir
-{:barrel_ex,  git: "https://gitlab.com/barrel-db/Clients/barrel_ex", branch: "develop"}
+{:barrel_ex_http,  git: "https://gitlab.com/barrel-db/Clients/barrel_ex_http", branch: "develop"}
 ```
 
 And use as you wish:
@@ -58,8 +58,8 @@ visit the API documentation at http://localhost:7080/api-doc/index.html.
 Then, get the code for BarrelEx:
 
 ```bash
-$ git clone https://gitlab.com/barrel-db/Clients/barrel_ex
-$ cd barrel_ex
+$ git clone https://gitlab.com/barrel-db/Clients/barrel_ex_http
+$ cd barrel_ex_http
 ```
 
 Finally, test the application with:
