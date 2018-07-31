@@ -12,7 +12,7 @@ defmodule BarrelEx.Database do
   """
   @spec get(none()) :: {atom(), map()}
   def get do
-    with url = make_url() do
+    with url <- make_url() do
       Request.get(url)
     end
   end
@@ -22,7 +22,7 @@ defmodule BarrelEx.Database do
   """
   @spec get(none()) :: map()
   def get! do
-    with url = make_url() do
+    with url <- make_url() do
       Request.get!(url)
     end
   end
@@ -33,7 +33,7 @@ defmodule BarrelEx.Database do
   """
   @spec get(String.t()) :: {atom(), map()}
   def get(db) do
-    with url = make_url(db) do
+    with url <- make_url(db) do
       Request.get(url)
     end
   end
@@ -43,7 +43,7 @@ defmodule BarrelEx.Database do
   """
   @spec get(String.t()) :: map()
   def get!(db) do
-    with url = make_url(db) do
+    with url <- make_url(db) do
       Request.get!(url)
     end
   end
@@ -66,7 +66,7 @@ defmodule BarrelEx.Database do
   """
   @spec create(map()) :: {atom(), map()}
   def create(db) when is_map(db) do
-    with url = make_url() do
+    with url <- make_url() do
       Request.post(url, db)
     end
   end
@@ -87,7 +87,7 @@ defmodule BarrelEx.Database do
   """
   @spec create!(map()) :: map()
   def create!(db) when is_map(db) do
-    with url = make_url() do
+    with url <- make_url() do
       Request.post!(url, db)
     end
   end
@@ -99,7 +99,7 @@ defmodule BarrelEx.Database do
   """
   @spec delete(String.t()) :: {atom(), map()}
   def delete(db) do
-    with url = make_url(db) do
+    with url <- make_url(db) do
       Request.delete(url)
     end
   end
@@ -109,7 +109,7 @@ defmodule BarrelEx.Database do
   """
   @spec delete!(String.t()) :: map()
   def delete!(db) do
-    with url = make_url(db) do
+    with url <- make_url(db) do
       Request.delete!(url)
     end
   end

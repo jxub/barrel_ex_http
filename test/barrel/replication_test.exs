@@ -1,5 +1,6 @@
 defmodule ReplicationTest do
   use ExUnit.Case
+
   alias BarrelEx.{
     Database,
     Document,
@@ -17,6 +18,7 @@ defmodule ReplicationTest do
     Database.create!("desttest")
     doc1 = %{name: "John", surname: "McCarthy"}
     Document.create!("sourcetest", doc1)
+
     with Replication.create("sourcetest", "desttest") do
       db1 = Database.get!("sourcetest")
       db2 = Database.get!("desttest")

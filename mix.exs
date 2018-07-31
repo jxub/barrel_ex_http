@@ -1,7 +1,7 @@
 defmodule BarrelEx.MixProject do
   use Mix.Project
 
-  @version "0.2.0"
+  @version "0.3.0"
 
   def project do
     [
@@ -40,8 +40,10 @@ defmodule BarrelEx.MixProject do
       files: ["config", "lib", "test", "LICENSE", "mix.exs", "README.md"],
       maintainers: ["Jakub Janarek"],
       licenses: ["MIT License"],
-      links: %{"GitHub" => "https://github.com/jxub/barrel_ex",
-        "GitLab" => "https://gitlab.com/barrel-db/Clients/barrel_ex_http"}
+      links: %{
+        "GitHub" => "https://github.com/jxub/barrel_ex_http",
+        "GitLab" => "https://gitlab.com/barrel-db/Clients/barrel_ex_http"
+      }
     ]
   end
 

@@ -9,6 +9,9 @@ defmodule BarrelEx.Document do
 
   ## GET - ALL DOCUMENTS SIMPLE
 
+  @doc """
+  Get all documents in a barrel named `db`.
+  """
   @spec get(String.t()) :: {atom(), map()}
   def get(db) do
     db
@@ -16,6 +19,10 @@ defmodule BarrelEx.Document do
     |> Request.get()
   end
 
+  @doc """
+  Get all documents in a barrel named `db`.
+  Raises exception.
+  """
   @spec get!(String.t()) :: map()
   def get!(db) do
     db
@@ -25,107 +32,146 @@ defmodule BarrelEx.Document do
 
   ## GET
 
+  @doc """
+  Get all documents in a barrel named `db` with a list of `options`.
+  """
   @spec get(String.t(), list()) :: {atom(), map()}
   def get(db, options) when is_list(options) do
-    with url = make_url(db) do
+    with url <- make_url(db) do
       Request.get(url, [], params: options)
     end
   end
 
+  @doc """
+  Get all documents in a barrel named `db` with a map of `options`.
+  """
   @spec get(String.t(), map()) :: {atom(), map()}
   def get(db, options) when is_map(options) do
-    with options = Map.to_list(options) do
+    with options <- Map.to_list(options) do
       options
       |> atomize_keys()
       |> get(db)
     end
   end
 
+  @doc """
+  Get a document in a barrel named `db` with an id `doc_id`.
+  """
   @spec get(String.t(), String.t()) :: {atom(), map()}
   def get(db, doc_id) do
-    with url = make_url(db, doc_id) do
+    with url <- make_url(db, doc_id) do
       Request.get(url)
     end
   end
 
+  @doc """
+  Get all documents in a barrel named `db` with a list of `options`.
+  Raises exception.
+  """
   @spec get!(String.t(), list()) :: map()
   def get!(db, options) when is_list(options) do
-    with url = make_url(db) do
+    with url <- make_url(db) do
       Request.get!(url, [], params: options)
     end
   end
 
+  @doc """
+  Get all documents in a barrel named `db` with a map of `options`.
+  Raises exception.
+  """
   @spec get!(String.t(), map()) :: map()
   def get!(db, options) when is_map(options) do
-    with options = Map.to_list(options) do
+    with options <- Map.to_list(options) do
       options
       |> atomize_keys()
       |> get!(db)
     end
   end
 
+  @doc """
+  Get a document in a barrel named `db` with an id `doc_id`.
+  Raises exception.
+  """
   @spec get!(String.t(), String.t()) :: {atom(), map()}
   def get!(db, doc_id) do
-    with url = make_url(db, doc_id) do
+    with url <- make_url(db, doc_id) do
       Request.get!(url)
     end
   end
 
-  ## GET - ONE DOCUMENT SIMPLE
-
-  ## GET - ONE DOCUMENT OPTIONS
-
-  # TODO: @spec get(String.t(), String.t(), boolean())
-
   ## CREATE
 
+  @doc """
+  Create a document `doc` in the barrel database `db`.
+  """
   @spec create(String.t(), map() | none()) :: {atom(), map()}
   def create(db, doc \\ %{}) do
-    with url = make_url(db) do
+    with url <- make_url(db) do
       Request.post(url, doc)
     end
   end
 
+  @doc """
+  Create a document `doc` in the barrel database `db`.
+  Raises exception.
+  """
   @spec create!(String.t(), map() | none()) :: map()
   def create!(db, doc \\ %{}) do
-    with url = make_url(db) do
+    with url <- make_url(db) do
       Request.post!(url, doc)
     end
   end
 
   ## DELETE
 
+  @doc """
+  Delete a document by `doc_id`.
+  """
   @spec delete(String.t(), String.t(), String.t() | none()) :: {atom(), map()}
   def delete(db, doc_id, e_tag \\ "") do
-    with url = make_url(db, doc_id),
-         headers = make_e_tag(e_tag) do
+    with url <- make_url(db, doc_id),
+         headers <- make_e_tag(e_tag) do
       Request.delete(url, headers)
     end
   end
 
+  @doc """
+  Delete a document by `doc_id`.
+  Raises exception.
+  """
   @spec delete!(String.t(), String.t(), String.t() | none()) :: map()
   def delete!(db, doc_id, e_tag \\ "") do
-    with url = make_url(db, doc_id),
-         headers = make_e_tag(e_tag) do
+    with url <- make_url(db, doc_id),
+         headers <- make_e_tag(e_tag) do
       Request.delete!(url, headers)
     end
   end
 
   ## UPDATE
 
-  @spec update(String.t(), String.t(), map(), String.t(), boolean()) :: {atom(), map()}
+  @doc """
+  Update a document by `doc_id`.
+  """
+  @spec update(String.t(), String.t(), map(), String.t(), boolean()) ::
+          {atom(), map()}
   def update(db, doc_id, doc, e_tag \\ "", edit \\ false) do
-    with url = make_url(db, doc_id) do
-      doc = Map.put_new(doc, "id", doc_id) # to add doc_id to body if doesn't exist
-      Request.put(url, doc, make_e_tag(e_tag), [edit: edit])
+    with url <- make_url(db, doc_id) do
+      # to add doc_id to body if doesn't exist
+      doc = Map.put_new(doc, "id", doc_id)
+      Request.put(url, doc, make_e_tag(e_tag), edit: edit)
     end
   end
 
+  @doc """
+  Update a document by `doc_id`.
+  Raises exception.
+  """
   @spec update(String.t(), String.t(), map(), String.t(), boolean()) :: map()
   def update!(db, doc_id, doc, e_tag \\ "", edit \\ false) do
-    with url = make_url(db, doc_id) do
-      doc = Map.put_new(doc, "id", doc_id) # to add doc_id to body if doesn't exist
-      Request.put!(url, doc, make_e_tag(e_tag), [edit: edit])
+    with url <- make_url(db, doc_id),
+         # to add doc_id to body if doesn't exist
+         doc <- Map.put_new(doc, "id", doc_id) do
+      Request.put!(url, doc, make_e_tag(e_tag), edit: edit)
     end
   end
 
@@ -142,8 +188,12 @@ defmodule BarrelEx.Document do
 
   defp make_id_match(doc_ids) do
     case is_list(doc_ids) do
-      true -> ["x-barrel-id-match: " <> Enum.join(doc_ids, ", ")] # TODO: test this header
-      _ -> []
+      # TODO: test this header
+      true ->
+        ["x-barrel-id-match: " <> Enum.join(doc_ids, ", ")]
+
+      _ ->
+        []
     end
   end
 
