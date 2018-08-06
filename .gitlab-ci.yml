@@ -1,0 +1,20 @@
+image: elixir:latest
+
+before_script:
+  - apt-get update -y
+  - mix local.rebar --force
+  - mix local.hex --force
+  - mix deps.get
+  - cd ..
+  - git clone https://gitlab.com/barrel-db/barrel-platform.git
+  - cd barrel-platform
+  - make rel
+  - ./_build/prod/rel/barrel/bin/barrel start
+  - cd ../barrel_ex
+
+# services:
+#  - barrel/barrel:latest
+
+test:
+  script:
+  - mix test
