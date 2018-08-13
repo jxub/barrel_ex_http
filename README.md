@@ -40,6 +40,10 @@ slightly outdated because building a second degree erlang dependency (jsone) bre
 
 ## Development
 
+Note: in order to connect to a remote barrel database, simply change
+the `database_url` and `database_port` variables in config.exs for the app,
+and run the next commands on the remote machine.
+
 Get the code for barrel-platform first, compile it and run in
 the background as follows:
 
