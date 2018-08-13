@@ -1,8 +1,8 @@
-defmodule BarrelEx.Document do
+defmodule Barrel.Document do
   @moduledoc """
   API for interacting with a BarrelDB document.
   """
-  alias BarrelEx.Request
+  alias Barrel.Request
 
   ## TODO: some header args like x-barrel-id-match and ETag
   ## are in headers, accept them too

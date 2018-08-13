@@ -1,11 +1,11 @@
-defmodule BarrelEx do
+defmodule Barrel do
   @moduledoc """
   Main module for the code.
 
   Usage:
 
   defmodule MyModule do
-    use BarrelEx
+    use Barrel
     
     def create_sample_user do
       with {:ok, db} <- Database.get(db) do
@@ -17,7 +17,7 @@ defmodule BarrelEx do
   """
   defmacro __using__(_) do
     quote do
-      alias BarrelEx.{
+      alias Barrel.{
         Database,
         Document,
         Exception,

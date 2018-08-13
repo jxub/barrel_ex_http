@@ -1,4 +1,4 @@
-defmodule BarrelEx.Stream do
+defmodule Barrel.Stream do
   @moduledoc """
   Stream API that allows to receive data
   feed info in real time.

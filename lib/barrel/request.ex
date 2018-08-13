@@ -1,10 +1,10 @@
-defmodule BarrelEx.Request do
+defmodule Barrel.Request do
   @moduledoc """
   Posion wrapper customization.
   """
   use HTTPoison.Base
 
-  @endpoint Application.get_env(:barrel_ex, :database_url)
+  @endpoint Application.get_env(:barrel_ex_http, :database_url)
 
   def process_url(url) do
     @endpoint <> url

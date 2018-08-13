@@ -1,7 +1,7 @@
 defmodule ReplicationTest do
   use ExUnit.Case
 
-  alias BarrelEx.{
+  alias Barrel.{
     Database,
     Document,
     Replication

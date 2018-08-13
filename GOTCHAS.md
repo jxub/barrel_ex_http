@@ -1,7 +1,7 @@
 # List of potential corner-cases
 
 returns :ok on failed db create attempt, change that?
-iex(4)> BarrelEx.Database.create "existing"
+iex(4)> Barrel.Database.create "existing"
 {:ok,
  %HTTPoison.Response{
    body: "{\"message\":\"db exists\"}",
@@ -17,7 +17,7 @@ iex(4)> BarrelEx.Database.create "existing"
 
 
 Looks like special chars are unsupported for database names:
-iex(5)> BarrelEx.Database.create "other!"
+iex(5)> Barrel.Database.create "other!"
 {:ok,
  %HTTPoison.Response{
    body: "{\"message\":\"db error\"}",
@@ -40,7 +40,7 @@ creating a doc:
 }
 
 
-BarrelEx.Document.get/2 supports this options map:
+Barrel.Document.get/2 supports this options map:
 %{
   "x-barrel-id-match" => x_barrel_id_match,
   "since" => since,

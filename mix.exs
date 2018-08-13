@@ -1,11 +1,11 @@
-defmodule BarrelEx.MixProject do
+defmodule Barrel.MixProject do
   use Mix.Project
 
   @version "0.3.0"
 
   def project do
     [
-      app: :barrel_ex,
+      app: :barrel_ex_http,
       version: @version,
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,

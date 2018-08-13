@@ -10,18 +10,18 @@ use Mix.Config
 
 # You can configure your application as:
 #
-#     config :barrel_ex, key: :value
+#     config :barrel_ex_http, key: :value
 #
 # and access this configuration in your application as:
 #
-#     Application.get_env(:barrel_ex, :key)
+#     Application.get_env(:barrel_ex_http, :key)
 #
 # You can also configure a 3rd-party app:
 #
 #     config :logger, level: :info
 #
 
-config :barrel_ex,
+config :barrel_ex_http,
   database_url: "http://localhost:7080/",
   # unused, too hard to format
   database_port: 7080

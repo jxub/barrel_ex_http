@@ -1,9 +1,9 @@
-defmodule BarrelEx.Server do
+defmodule Barrel.Server do
   @moduledoc """
   Gives information about Barrel version,
   object ID's and access to the documentation.
   """
-  alias BarrelEx.Request
+  alias Barrel.Request
 
   @doc """
   Information about Barrel-db version,

@@ -1,8 +1,8 @@
-defmodule BarrelEx.Replication do
+defmodule Barrel.Replication do
   @moduledoc """
   Manage database replication tasks
   """
-  alias BarrelEx.Request
+  alias Barrel.Request
 
   @doc """
   Get all replication tasks.

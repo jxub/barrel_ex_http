@@ -1,8 +1,8 @@
-defmodule BarrelEx.Database do
+defmodule Barrel.Database do
   @moduledoc """
   API for interacting with a BarrelDB database.
   """
-  alias BarrelEx.Request
+  alias Barrel.Request
 
   ## GET
 

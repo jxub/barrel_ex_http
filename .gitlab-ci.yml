@@ -10,7 +10,7 @@ before_script:
   - cd barrel-platform
   - make rel
   - ./_build/prod/rel/barrel/bin/barrel start
-  - cd ../barrel_ex
+  - cd ../barrel_ex_http
 
 # services:
 #  - barrel/barrel:latest

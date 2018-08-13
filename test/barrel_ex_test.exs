@@ -1,4 +1,4 @@
-defmodule BarrelExTest do
+defmodule BarrelTest do
   use ExUnit.Case
-  doctest BarrelEx
+  doctest Barrel
 end

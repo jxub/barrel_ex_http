@@ -1,6 +1,6 @@
 defmodule DatabaseTest do
   use ExUnit.Case, async: true
-  alias BarrelEx.Database
+  alias Barrel.Database
 
   setup do
     %{db: "ehlo", db2: "mongo", db3: "55**"}

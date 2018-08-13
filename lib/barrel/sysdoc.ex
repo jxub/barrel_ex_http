@@ -1,11 +1,11 @@
-defmodule BarrelEx.Sysdoc do
+defmodule Barrel.Sysdoc do
   @moduledoc """
   Utilities for working with system documents.
   Usually not to be used, nevertheless I'll
   expose the API as I don't want to limit
-  the BarrelEx client.
+  the Barrel client.
   """
-  alias BarrelEx.Request
+  alias Barrel.Request
 
   @doc """
   Get a system document and the response status.
